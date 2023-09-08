@@ -7,8 +7,8 @@ fs.writeFileSync("read.txt", "Welcome to my node js");
 fs.appendFileSync("read.txt", "\nMy name is gajanan");
 
 //Read
-// const read = fs.readFileSync("read.txt");
-// console.log(read.toString());
+const readBuf = fs.readFileSync("read.txt");
+console.log(readBuf);
 //Beacause if we mention utf-8, it will give string else gives buffer
 const read = fs.readFileSync("read.txt", "utf-8");
 console.log(read);
