@@ -1,0 +1,6 @@
+const o=require('os')
+console.log(o.arch())
+console.log(o.totalmem()/1024/1024/1024)
+console.log(o.freemem()/1024/1024/1024)
+console.log(o.hostname())
+console.log(o.platform())
