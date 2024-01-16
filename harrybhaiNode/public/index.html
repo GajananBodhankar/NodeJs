@@ -7,13 +7,18 @@
   </head>
   <body>
     <h1>Hello from index.html</h1>
-      <input type="text" />
-      <button onclick="Submit()">Click</button>
-    </form>
+    <input type="text" />
+    <button onclick="Submit()">Click</button>
     <script>
       function Submit() {
         alert("hii");
       }
+      async function checkPost() {
+        let x = await fetch("/items", { method: "POST" });
+        let res = await x.text();
+        console.log(res);
+      }
+      checkPost();
     </script>
   </body>
 </html>

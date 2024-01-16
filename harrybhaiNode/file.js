@@ -19,6 +19,13 @@ fs.readFile("demo.txt", "utf-8", (error, data) => {
   error ? console.log("Error") : console.log(data);
 });
 
-fs.unlink("demo.txt", (error, data) => {
-  console.log(data, error);
-});
+// To delete file
+// fs.unlink("demo.txt", (error, data) => {
+//   console.log(data, error);
+// });
+
+export let obj = {
+  name: "gajanan",
+  age: 22,
+  location: "hyd",
+};

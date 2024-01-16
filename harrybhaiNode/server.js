@@ -1,5 +1,4 @@
 // import http from "http";
-
 // const server = http.createServer((req, res) => {
 //   if (req.url == "/") {
 
@@ -11,20 +10,41 @@
 //     res.end("Users");
 //   }
 // });
+
 // ****************************************************************************
-import express from "express";
+// Static file  access
+import express, { json } from "express";
+import { obj } from "./file.js";
+import cors from "cors";
 let app = express();
 app.use(express.static("public"));
 
-app.get("/name", function (req, res) {
+app.get("/users", function (req, res) {
   console.log(req.query);
 
   res.send("Welcome to home page");
 });
 
-app.get("/:reqParams", (req, res) => {
-  console.log(req.query);
-  res.send(`hello ${req.params.reqParams}`);
+// app.get("/:reqParams", (req, res) => {
+//   console.log(req.query);
+//   res.send(`hello ${req.params.reqParams}`);
+// });
+
+// *****************************************************
+// Post
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+app.use(express.json());
+app.post("/items", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.send({ data: `${JSON.stringify(req.body)}`, status: "successful" });
+});
+
+app.get("/api", (req, res) => {
+  res.json(obj);
 });
 
 app.listen(3000, (e) => {
