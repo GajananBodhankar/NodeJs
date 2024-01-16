@@ -17,6 +17,8 @@ let app = express();
 app.use(express.static("public"));
 
 app.get("/name", function (req, res) {
+  console.log(req.query);
+
   res.send("Welcome to home page");
 });
 
