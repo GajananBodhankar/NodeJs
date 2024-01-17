@@ -43,7 +43,6 @@ app.use(express.json());
 app.post("/items", (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.send({ data: `${JSON.stringify(req.body)}`, status: "successful" });
-  
 });
 
 app.get("/api", (req, res) => {
