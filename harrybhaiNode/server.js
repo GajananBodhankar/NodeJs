@@ -16,9 +16,11 @@
 import express, { json } from "express";
 import { obj } from "./file.js";
 import cors from "cors";
+import router from "./routes/blog.js";
 let app = express();
 app.use(express.static("public"));
 
+app.use("/blog", router);
 app.get("/users", function (req, res) {
   console.log(req.query);
 
