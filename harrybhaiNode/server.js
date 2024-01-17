@@ -18,6 +18,11 @@ import { obj } from "./file.js";
 import cors from "cors";
 import router from "./routes/blog.js";
 let app = express();
+
+app.get("/", (req, res) => {
+  res.send("Welcome to home page");
+});
+
 app.use(express.static("public"));
 
 app.use("/blog", router);
