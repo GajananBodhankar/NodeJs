@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Hello I am index from ejs
+    <h4>The parameter passed is <%= sitename %></h4>
+    <div id="props"></div>
+  </body>
+  <script>
+    let x=[<%= arr %>]
+    x.forEach(i=>{
+      let p=document.createElement('p')
+      p.innerText=i
+      document.getElementById('props').append(p)
+    })
+  </script>
+</html>
