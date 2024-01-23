@@ -1,6 +1,7 @@
 use("Sigma");
 
-// let x = db.getCollection("practice").insertMany([
+// Inserted Data in MongoDB *****
+// db.practice.insertMany([
 //   {
 //     name: "John",
 //     age: 25,
@@ -53,8 +54,26 @@ use("Sigma");
 //   },
 // ]);
 
-let response = db
-  .getCollection("practice")
-  .find({ name: "Bob" }, { _id: 1 })
-  .toArray();
-console.log(typeof response, response[0]._id);
+db.practice.find({ name: "Daniel" }, { name: 1, age: 1, address: 1 });
+
+// To Find and make changes clearly
+// db.practice.findAndModify({
+//   query: { address: "Pen State" },
+//   update: { name: "Daniel", age: 31, address: "Pen State" },
+// });
+
+// To enhanced version of modify
+// db.practice.findOneAndUpdate({ name: "John" }, { $set: { age: 40 } });
+
+// Count
+db.practice.find().count();
+
+// *************************
+// UPdate
+db.practice.update({ name: "Olivia" }, { $set: { age: 55 } });
+
+// Delete
+
+// db.practice.findOneAndDelete({ name: "Eva" });
+// OR
+// db.practice.deleteOne({name:'Alice'})
