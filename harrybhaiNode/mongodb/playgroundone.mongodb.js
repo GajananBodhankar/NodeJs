@@ -53,8 +53,8 @@ use("Sigma");
 //   },
 // ]);
 
-
-console.log(db.listCommands());
-
-let data = db.getUsers();
-console.log(data);
+let response = db
+  .getCollection("practice")
+  .find({ name: "Bob" }, { _id: 1 })
+  .toArray();
+console.log(typeof response, response[0]._id);
