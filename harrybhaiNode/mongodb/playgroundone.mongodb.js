@@ -70,10 +70,14 @@ db.practice.find().count();
 
 // *************************
 // UPdate
-db.practice.update({ name: "Olivia" }, { $set: { age: 55 } });
+// db.practice.update({ name: "Olivia" }, { $set: { age: 55 } });
 
 // Delete
 
 // db.practice.findOneAndDelete({ name: "Eva" });
 // OR
 // db.practice.deleteOne({name:'Alice'})
+
+db.practice.find({ age: { $ne: 25 } });
+
+db.practice.find({ $or: [{ name: "Gajanan" }, { age: 22 }] });
