@@ -78,6 +78,8 @@ db.practice.find().count();
 // OR
 // db.practice.deleteOne({name:'Alice'})
 
+// TO DELETE ENTIRE DOCUMENTS, USE CAREFULLY
+// db.practice.deleteMany({})
 db.practice.find({ age: { $ne: 25 } });
 
 db.practice.find({ $or: [{ name: "Gajanan" }, { age: 22 }] });
