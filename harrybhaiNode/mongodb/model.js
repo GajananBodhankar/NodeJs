@@ -1,6 +1,9 @@
 import mongoose from "mongoose";
 const schema = new mongoose.Schema({
-  title: String,
+  title: {
+    type: String,
+    unique: true,
+  },
   description: String,
   isDone: Boolean,
 });

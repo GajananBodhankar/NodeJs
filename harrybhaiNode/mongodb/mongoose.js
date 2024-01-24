@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import express from "express";
 import { model } from "./model.js";
 import route from "./routes.js";
+import jwt from 'jsonwebtoken'
 let app = express();
 let con = await mongoose.connect("mongodb://localhost:27017/Sigma");
 if (con) {
@@ -14,17 +15,14 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/users", async (req, res) => {
-  let data = new model(req.body);
-  let dbData = await model.find();
-  if (dbData.every((i) => i.title != data.title)) {
+  try {
+    let data = new model(req.body);
+    let dbData = await model.find();
     let response = await model.insertMany(data);
-    if (response[0]._id) {
-      res.send({ success: true }).status(200);
-    }
-  } else {
-    res.send({ success: false, message: "Title already exists" });
+    res.send({ success: true }).status(200);
+  } catch (e) {
+    res.send({ success: false, message: e.message });
   }
-  console.log(dbData);
 });
 
 app.use("/title", route);
