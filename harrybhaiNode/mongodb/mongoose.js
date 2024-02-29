@@ -2,19 +2,22 @@ import mongoose from "mongoose";
 import express from "express";
 import { model } from "./model.js";
 import route from "./routes.js";
-import jwt from 'jsonwebtoken'
+import jwt from "jsonwebtoken";
+import passport from "passport";
 let app = express();
 let con = await mongoose.connect("mongodb://localhost:27017/Sigma");
 if (con) {
   console.log("Connection Successful");
 }
 app.use(express.json());
+app.use(passport.initialize());
 app.get("/", async (req, res) => {
   let data = await model.find();
   res.send(data);
 });
 
-app.post("/users", async (req, res) => {
+app.post("/users", passport.authenticate("local"), async (req, res) => {
+  console.log(req, "hi");
   try {
     let data = new model(req.body);
     let dbData = await model.find();
