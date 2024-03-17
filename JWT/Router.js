@@ -9,7 +9,7 @@ route.post("/login", async (req, res) => {
     let data = await userModel.insertMany(req.body);
     if (data) {
       let token = jwt.sign({ username: req.body.username }, secretKey, {
-        expiresIn: 10,
+        expiresIn: "6h",
       });
       console.log(token);
       res.status(200).send({
