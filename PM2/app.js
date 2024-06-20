@@ -4,10 +4,9 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
     let sum = 0;
-    for (let i = 0; i < 5000; i++) {
-        sum += i
-    }
-    
+    // for (let i = 0; i < 5000; i++) {
+    //     sum += i
+    // }
     res.send(`${sum}`)
 })
 
