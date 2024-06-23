@@ -825,14 +825,14 @@ use("Aggregate");
 //         },
 //     ])
 
-// db.users.aggregate([{
-//     $group: {
-//       _id: "$gender",
-//       averageAge: {
-//         $avg: "$age"
-//       }
-//     }
-// }])
+db.users.aggregate([{
+    $group: {
+        _id: "$gender",
+        averageAge: {
+            $avg: "$age"
+        }
+    }
+}])
 
 // db.users.aggregate([{
 //     $group: {
@@ -844,11 +844,76 @@ use("Aggregate");
 
 // }])
 
+// db.users.aggregate([{
+//     $group: {
+//         _id: "$company.location.country",
+//         count: {
+//             $sum: 1
+//         }
+//     },
+// }, {
+//     $sort: {
+//         count: -1
+//     }
+// }])
+
+// db.users.aggregate([{
+//     $group: {
+//         _id: "$eyeColor"
+//     }
+// }])
+
+// db.users.aggregate([{
+//     $count:'index'
+// }])
+
+// db.users.aggregate([{
+//     $match: {
+//         tags: 'enim',
+//     }
+// }, {
+//     $count: 'tags'
+// }])
+
+db.users.aggregate([{
+    $match: {
+        tags: 'velit',
+        isActive: false
+    }
+}, {
+    $project: {
+        name: 1,
+        age: 1
+    }
+}])
+
+db.users.aggregate([{
+    $match: {
+        "company.phone": {
+            $regex: /^\+1 \(940\)/i
+        }
+    }
+}])
+
+db.users.aggregate([{
+    $sort: {
+        registered: -1
+    },
+}, {
+    $limit: 2
+}, {
+    $project: {
+        name: 1,
+        registered: 1,
+        company: 1
+    }
+}])
+
 db.users.aggregate([{
     $group: {
-        _id: "$gender",
-        Total: {
-            $sum: 1
+        _id: "$favoriteFruit",
+        Totalusers: {
+            $push: '$name'
         }
     }
 }])
