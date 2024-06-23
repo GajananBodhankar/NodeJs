@@ -834,12 +834,21 @@ use("Aggregate");
 //     }
 // }])
 
+// db.users.aggregate([{
+//     $group: {
+//         _id: "$favoriteFruit",
+//         count: {
+//             $sum: 1
+//         }
+//     },
+
+// }])
+
 db.users.aggregate([{
     $group: {
-        _id: "$favoriteFruit",
-        count: {
+        _id: "$gender",
+        Total: {
             $sum: 1
         }
-    },
-
+    }
 }])
