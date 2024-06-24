@@ -864,7 +864,12 @@ db.users.aggregate([{
 // }])
 
 // db.users.aggregate([{
-//     $count:'index'
+//     $group: {
+//         _id: "$tags",
+
+//     }
+// }, {
+//     $count: 'tags'
 // }])
 
 
@@ -876,45 +881,45 @@ db.users.aggregate([{
 //     $count: 'tags'
 // }])
 
-db.users.aggregate([{
-    $match: {
-        tags: 'velit',
-        isActive: false
-    }
-}, {
-    $project: {
-        name: 1,
-        age: 1
-    }
-}])
+// db.users.aggregate([{
+//     $match: {
+//         tags: 'velit',
+//         isActive: false
+//     }
+// }, {
+//     $project: {
+//         name: 1,
+//         age: 1
+//     }
+// }])
 
-db.users.aggregate([{
-    $match: {
-        "company.phone": {
-            $regex: /^\+1 \(940\)/i
-        }
-    }
-}])
+// db.users.aggregate([{
+//     $match: {
+//         "company.phone": {
+//             $regex: /^\+1 \(940\)/i
+//         }
+//     }
+// }])
 
-db.users.aggregate([{
-    $sort: {
-        registered: -1
-    },
-}, {
-    $limit: 2
-}, {
-    $project: {
-        name: 1,
-        registered: 1,
-        company: 1
-    }
-}])
+// db.users.aggregate([{
+//     $sort: {
+//         registered: -1
+//     },
+// }, {
+//     $limit: 2
+// }, {
+//     $project: {
+//         name: 1,
+//         registered: 1,
+//         company: 1
+//     }
+// }])
 
-db.users.aggregate([{
-    $group: {
-        _id: "$favoriteFruit",
-        Totalusers: {
-            $push: '$name'
-        }
-    }
-}])
+// db.users.aggregate([{
+//     $group: {
+//         _id: "$favoriteFruit",
+//         Totalusers: {
+//             $push: '$name'
+//         }
+//     }
+// }])
