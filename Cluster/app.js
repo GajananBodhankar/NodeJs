@@ -8,7 +8,6 @@ if (cluster.isPrimary) {
     }
 } else {
     let app = express();
-
     app.get("/", (req, res) => {
         res.json({
             message: `Hello my process id is ${process.pid}`
