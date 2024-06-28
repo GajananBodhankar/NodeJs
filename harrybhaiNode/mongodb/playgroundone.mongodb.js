@@ -866,7 +866,6 @@ db.users.aggregate([{
 // db.users.aggregate([{
 //     $group: {
 //         _id: "$tags",
-
 //     }
 // }, {
 //     $count: 'tags'
@@ -920,6 +919,24 @@ db.users.aggregate([{
 //         _id: "$favoriteFruit",
 //         Totalusers: {
 //             $push: '$name'
+//         }
+//     }
+// }])
+
+// db.users.aggregate([{
+//     $group: {
+//       _id: expression,
+//       fieldN: {
+//         accumulatorN: expressionN
+//       }
+//     }
+// }])
+
+// db.users.aggregate([{
+//     $group: {
+//         _id: "age",
+//         average: {
+//             $avg:"$age"
 //         }
 //     }
 // }])
