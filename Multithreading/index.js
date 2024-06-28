@@ -1,4 +1,7 @@
 import express from 'express'
+import {
+    Worker
+} from 'worker_threads'
 let PORT = process.env.PORT || 3000;
 
 let app = express();
@@ -11,12 +14,11 @@ app.get('/non-blocking', (req, res) => {
 })
 
 app.get('/blocking', (req, res) => {
-    let count = 0;
-    for (let i = 0; i < 300000000000; i++) {
-        count++
-    }
-    res.json({
-        Message: `Count is ${count}`
+    const worker = new Worker('./worker.js')
+    worker.on('message', (data) => {
+        res.json({
+            Message: `Count is ${data}`
+        })
     })
 })
 
