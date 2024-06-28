@@ -12,7 +12,7 @@ app.get('/non-blocking', (req, res) => {
 
 app.get('/blocking', (req, res) => {
     let count = 0;
-    for (let i = 0; i < 30000000; i++) {
+    for (let i = 0; i < 300000000000; i++) {
         count++
     }
     res.json({
