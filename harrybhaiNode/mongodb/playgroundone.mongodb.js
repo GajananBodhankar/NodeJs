@@ -1,5 +1,12 @@
 use("Aggregate");
-
+db.users.aggregate([{
+    $group: {
+        _id: '$gender',
+        average:{
+            $avg:'$age'
+        }
+    }
+}])
 // Inserted Data in MongoDB *****
 // db.practice.insertMany([
 //   {
@@ -825,14 +832,14 @@ use("Aggregate");
 //         },
 //     ])
 
-db.users.aggregate([{
-    $group: {
-        _id: "$gender",
-        averageAge: {
-            $avg: "$age"
-        }
-    }
-}])
+// db.users.aggregate([{
+//     $group: {
+//         _id: "$gender",
+//         averageAge: {
+//             $avg: "$age"
+//         }
+//     }
+// }])
 
 // db.users.aggregate([{
 //     $group: {
