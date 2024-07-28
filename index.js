@@ -7,7 +7,6 @@ app.get('/', (req, res) => {
     for (let i = 0; i < 5000; i++) {
         sum += i
     }
-    
     res.send(`${sum}`)
 })
 
